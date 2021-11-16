@@ -1,29 +1,23 @@
 import React , {useState} from 'react';
+import { checkAccount } from '../../../utils/requests';
 
 const Main = ({setLoggedIn, setRegister}) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     function logIn(){
-        fetch({
-            method: 'post',
-            url: 'https://trackout.herokuapp.com/api/user/login',
-            data: {
-              email : email,
-              password : password
-            }
-          })
-          .then(function (response) {
+        if (email === '' || password === ''){
+            alert('Va rog sa introduceti numele si parola');
+        }
+        else{
+            console.log(email,password)
+            checkAccount(email,password);
             setLoggedIn(true);
-            console.log('true')
-          })
-          .catch(function (error) {
-            console.log(error)
-            alert('Nume parola gresita');
-          });
+        }
     }
 
     function register(){
+        console.log('aici')
         setRegister(true);
     }
 
@@ -31,7 +25,7 @@ const Main = ({setLoggedIn, setRegister}) => {
     return (
         <div className = 'main'>
             <div className ='subMain'>
-                <h1 className = 'title'>Andrei</h1>
+                <h1 className = 'title'>Log in</h1>
                 <div className = 'infoInput'>
                     <div className = 'email'>
                         <label className ='label'>Email</label>
