@@ -31,7 +31,7 @@ const Main = ({setLoggedIn, setRegister}) => {
     return (
         <div className = 'main'>
             <div className ='subMain'>
-                <h1 className = 'title'>Log in</h1>
+                <h1 className = 'title'>Test</h1>
                 <div className = 'infoInput'>
                     <div className = 'email'>
                         <label className ='label'>Email</label>
