@@ -1,0 +1,105 @@
+.main {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.subMain{
+    position: absolute;
+    width: 400px;
+    height: 250px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    border-radius: 30px;
+    background-color: #f5f5f5;
+}
+
+.title{
+    text-align: center;
+    color: green;
+}
+
+.label{
+    width: 75px;
+    padding-top: 7px;
+    margin-bottom: 0;
+    font-size: 18px;
+    color:#5d5d5d;
+    display: inline;
+    margin-right: 10px;
+}
+
+#email{
+    width: 210px;
+    height: 25px;
+    border-radius: 5px;
+    border:solid 1px black
+}
+
+#password{
+    width: 210px;
+    height: 25px;
+    border-radius: 5px;
+    border:solid 1px black
+}
+
+.btnLogin{
+    margin-top: 15px;
+    margin-left: 153px;
+    font-size: 15px;
+    font-weight: bold;
+    height: 30px;
+    width: 150px;
+    background-color: dodgerblue;
+    border-radius: 5px;
+    color: white;
+    border:none;
+}
+
+.btnLogin:hover{
+    box-shadow: 1.5px 1.5px 1.5px 1.5px grey;
+}
+
+.topBar{
+    height: 70px;
+    background-color: #ffffff;
+    width: 100%;
+    padding-top: 10px;
+    text-align: left;
+}
+
+.footer{
+    height: 49px;
+    font-size: 10px;
+    color:#909090;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.register{
+    margin-top: 5px;
+    margin-left: 153px;
+    font-size: 15px;
+    font-weight: bold;
+    height: 20px;
+    width: 120px;
+    background-color: dodgerblue;
+    border-radius: 5px;
+    color: white;
+    border:none;
+}
+
+.register:hover{
+    box-shadow: 1.5px 1.5px 1.5px 1.5px grey;
+}
