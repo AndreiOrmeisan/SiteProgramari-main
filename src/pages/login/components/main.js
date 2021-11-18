@@ -5,14 +5,22 @@ const Main = ({setLoggedIn, setRegister}) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    function logIn(){
+    async function logIn(){
         if (email === '' || password === ''){
             alert('Va rog sa introduceti numele si parola');
         }
         else{
-            console.log(email,password)
-            checkAccount(email,password);
-            setLoggedIn(true);
+            let response = await checkAccount(email,password)
+
+            if (response !== 'Error'){
+                localStorage.setItem('token', response.data)
+                setLoggedIn(true);
+            }
+            else{
+                alert ('Nume sau parola este gresita');
+                document.getElementById('email').value = '';
+                document.getElementById('password').value ='';
+            }
         }
     }
 
