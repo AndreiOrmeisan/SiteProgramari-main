@@ -1,0 +1,44 @@
+.navbar{
+    width: 100%;
+    height: 100%;
+    background-color: gray;
+    display: flex;
+    flex-direction: row;
+}
+
+.navbar .rightSide{
+    flex : 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin: 20px;
+}
+
+.navbar .rightSide button{
+    background-color: transparent;
+    border:none;
+    color:white;
+    cursor: pointer;
+}
+
+.navbar .rightSide svg {
+    font-size: 40px;
+}
+
+
+.navbar #open a {
+    width: 70px;
+    margin: 5px;
+}
+
+#imgLogo {
+    width: 100px;
+    height: 50px;
+    margin-left: -400px;
+}
