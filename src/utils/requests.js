@@ -1,7 +1,8 @@
 import axios from 'axios';
 
-export function checkAccount (email,password) {
-    axios({
+export async function checkAccount (email,password) {
+
+    let response = await axios({
         method: 'POST',
         url: 'https://trackout.herokuapp.com/api/user/login',
         data: {
@@ -9,28 +10,30 @@ export function checkAccount (email,password) {
           password : password
         }
     })
-    .then(function (response) {
-        console.log(response)
-    })
-    .catch(function (error) {
-        console.log(error)
+    .then(response => response)
+    .then(data => data)
+    .catch(function () {
+        return 'Error';
     });
+
+    return response;
 }
 
-export function newAccount (email,password) {
-    axios({
+export async function newAccount (email,password) {
+
+    let response = await axios({
         method: 'POST',
         url: 'https://trackout.herokuapp.com/api/user/create',
         data: {
-          email : email,
-          password : password
+            email : email,
+            password : password
         }
     })
-    .then(function (response) {
-        console.log(response)
-    })
-    .catch(function (error) {
-        console.log(error)
+    .then(response => response)
+    .then(data => data)
+    .catch(function () {
+        return 'Error';
     });
 
+    return response;
 }

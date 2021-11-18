@@ -15,9 +15,19 @@ const Register = ({setRegister}) => {
                 console.log(strength)
 
                 if (strength === 'Parola puternica!' || strength === 'Parola buna!'){
-                    newAccount(email,password);
-                    setRegister(false)
-                    alert('Te-ai inregistrat cu succes');
+
+                    let response = await newAccount(email,password);
+
+                    if (response === "Error"){
+                        alert('Acest email este deja inregistrat !');
+                        document.getElementById('emailRegister').value = '';
+                        document.getElementById('passwor').value = '';
+                        document.getElementById('confPassword').value ='';
+                    }
+                    else{
+                        setRegister(false)
+                        alert('Te-ai inregistrat cu succes');
+                    }
                 }
                 else{
                     alert('Parola trebuie sa contina minim 8 caractere si minim un numar !')
@@ -51,15 +61,15 @@ const Register = ({setRegister}) => {
         <div className = 'maineRegister'>
           <div>
             <label id = 'label'>Email</label>
-            <input id = 'emailRegister' type='text' onChange = {e => setEmail(e.target.value)}></input>
+            <input id = 'emailRegister' type='text' onChange = {e => setEmail(e.target.value)} ></input>
           </div>
           <div>
             <label id = 'label'>Password</label>
-            <input id = 'passwor' type='password' onChange = {e => onChange(e.target.value)}></input>
+            <input id = 'passwor' type='password' onChange = {e => onChange(e.target.value)} ></input>
           </div>
           <div>
             <label id = 'label'>Confirm password</label>
-            <input id = 'confPassword' type='password' onChange = {e => setConfPassword(e.target.value)}></input>
+            <input id = 'confPassword' type='password' onChange = {e => setConfPassword(e.target.value)} ></input>
           </div>
           <div>
             <span id="strength">Verificare parola</span>
@@ -80,9 +90,9 @@ function passwordChanged(password) {
     var mediumRegex = new RegExp("^(?=.{10,})(((?=.*[A-Z])(?=.*[a-z]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$", "g");
     var enoughRegex = new RegExp("(?=.{8,}).*", "g");
     var pwd = password;
-    if (pwd.length == 0) {
+    if (pwd.length === 0) {
         strength.innerHTML = 'Verificare parola';
-    } else if (false == enoughRegex.test(pwd)) {
+    } else if (false === enoughRegex.test(pwd)) {
         strength.innerHTML = '<span style="color:red">Prea putine caractere!</span>';
     } else if (strongRegex.test(pwd)) {
         strength.innerHTML = '<span style="color:green">Parola puternica!</span>';
