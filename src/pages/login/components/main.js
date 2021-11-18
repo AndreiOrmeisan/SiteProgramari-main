@@ -1,9 +1,11 @@
 import React , {useState} from 'react';
 import { checkAccount } from '../../../utils/requests';
+import { Navigate,Link} from "react-router-dom";
 
 const Main = ({setLoggedIn, setRegister}) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [succesLogin, setSuccesLogin] = useState('false');
 
     async function logIn(){
         if (email === '' || password === ''){
@@ -12,12 +14,18 @@ const Main = ({setLoggedIn, setRegister}) => {
         else{
             let response = await checkAccount(email,password)
 
-            if (response !== 'Error'){
-                localStorage.setItem('token', response.data)
+            if (response.data.successful){
+                localStorage.setItem('token', response.data.token)
                 setLoggedIn(true);
+                setSuccesLogin(true);
             }
-            else{
-                alert ('Nume sau parola este gresita');
+            else if (response.data.userDoesntExist){
+                alert ('Userul nu a fost gasit');
+                document.getElementById('email').value = '';
+                document.getElementById('password').value ='';
+            }
+            else if (response.data.wrongPassword){
+                alert ('Parola este gresita');
                 document.getElementById('email').value = '';
                 document.getElementById('password').value ='';
             }
@@ -25,10 +33,25 @@ const Main = ({setLoggedIn, setRegister}) => {
     }
 
     function register(){
-        console.log('aici')
         setRegister(true);
     }
 
+    if (succesLogin === true){
+        document.getElementById('btnLogin').innerHTML = 'Log out';
+        return (
+            <Navigate to = '/'>
+
+            </Navigate>
+        )
+    }
+
+    if (document.getElementById('btnLogin').innerHTML == 'Log out'){
+        return (
+            <Navigate to = '/logout'>
+
+            </Navigate>
+        )
+    }
 
     return (
         <div className = 'main'>
@@ -48,7 +71,9 @@ const Main = ({setLoggedIn, setRegister}) => {
                     <button className='btnLogin' onClick = {logIn}>Log in</button>
                 </div>
                 <div>
-                    <button className = 'register' onClick = {register}>Register now</button>
+                    <Link to = '/inregistrare'>
+                        <button className = 'register' onClick = {register}>Register now</button>
+                    </Link> 
                 </div>   
             </div>         
         </div>

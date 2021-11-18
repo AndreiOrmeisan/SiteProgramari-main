@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {Link} from 'react-router-dom';
 import { newAccount } from '../../../utils/requests';
 
 const Register = ({setRegister}) => {
@@ -59,22 +60,24 @@ const Register = ({setRegister}) => {
 
     return(
         <div className = 'maineRegister'>
-          <div>
-            <label id = 'label'>Email</label>
-            <input id = 'emailRegister' type='text' onChange = {e => setEmail(e.target.value)} ></input>
-          </div>
-          <div>
-            <label id = 'label'>Password</label>
-            <input id = 'passwor' type='password' onChange = {e => onChange(e.target.value)} ></input>
-          </div>
-          <div>
-            <label id = 'label'>Confirm password</label>
-            <input id = 'confPassword' type='password' onChange = {e => setConfPassword(e.target.value)} ></input>
-          </div>
-          <div>
-            <span id="strength">Verificare parola</span>
-          </div>
-          <button className = 'btnRegister' onClick = {checkInfoForRegister}>Submit</button>
+            <Link to = '/inregistrare'>
+                <div>
+                    <label id = 'label'>Email</label>
+                    <input id = 'emailRegister' type='text' onChange = {e => setEmail(e.target.value)} ></input>
+                </div>
+                <div>
+                    <label id = 'label'>Password</label>
+                    <input id = 'passwor' type='password' onChange = {e => onChange(e.target.value)} ></input>
+                </div>
+                <div>
+                    <label id = 'label'>Confirm password</label>
+                    <input id = 'confPassword' type='password' onChange = {e => setConfPassword(e.target.value)} ></input>
+                </div>
+                <div>
+                    <span id="strength">Verificare parola</span>
+                </div>
+                <button className = 'btnRegister' onClick = {checkInfoForRegister}>Submit</button>
+            </Link>
         </div>
     )
 }
