@@ -39,7 +39,6 @@ export async function newAccount (email,password) {
 }
 
 export async function newRegister (token){
-    console.log(token)
     let response = await axios ({
         method: 'POST',
         url: 'https://trackout.herokuapp.com/api/reservation/make',
@@ -57,4 +56,18 @@ export async function newRegister (token){
     });
 
     return response;
+}
+
+export async function getBussinessSnippets (){
+    await axios ({
+        method: 'GET',
+        url: 'https://trackout.herokuapp.com/api/business/snippets/get?query&page=0&pageSize=2'
+    })
+    .then(response => response)
+    .then(data => {
+        return data;
+    })
+    .catch(function () {
+        return 'Error';
+    });
 }

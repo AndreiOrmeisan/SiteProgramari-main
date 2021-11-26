@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import Card from '../../components/Card';
-import './dashboard.css';
+import Card from './Card';
 
 class Dashboard extends Component {
   constructor() {
@@ -9,7 +8,8 @@ class Dashboard extends Component {
   }
 
   componentDidMount() {
-    fetch("https://trackout.herokuapp.com/api/business/snippets/get?query&page=0&pageSize=5")
+    console.log(this.props)
+    fetch("https://trackout.herokuapp.com/api/business/get?businessId="+this.props.info)
       .then(res => res.json())
       .then(
         (result) => {
@@ -21,15 +21,13 @@ class Dashboard extends Component {
   }
   
   render() {
+    console.log('aici',this.state.data)
     return (
       <div className = 'card'>
-          {this.state.data.map(el => (
-            <Card name = {el.businessName} img = {el.businessImgUrl} rating = {el.rating} id = {el.businessId} setInfo = {this.props.setInfo}></Card>
-          ))}
+          <Card name = {this.state.data.businessName} img = {this.state.data.businessImgUrl} rating = {this.state.data.rating} id = {this.state.data.businessId} setInfo = {this.props.setInfo}></Card>
       </div>
     );
   }
 }
 
 export default Dashboard;
-

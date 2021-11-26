@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Link} from 'react-router-dom';
+import {Link,Navigate} from 'react-router-dom';
 import { newAccount } from '../../../utils/requests';
 
 const Register = ({setRegister}) => {
@@ -7,6 +7,7 @@ const Register = ({setRegister}) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confPassword, setConfPassword] = useState(false);
+    const [succesNewAccount, setSucceNewAccount] = useState(false);
 
     async function checkInfoForRegister(){
 
@@ -26,7 +27,8 @@ const Register = ({setRegister}) => {
                         document.getElementById('confPassword').value ='';
                     }
                     else{
-                        setRegister(false)
+                        setRegister(false);
+                        setSucceNewAccount(true);
                         alert('Te-ai inregistrat cu succes');
                     }
                 }
@@ -56,6 +58,14 @@ const Register = ({setRegister}) => {
     function onChange(input){
         setPassword(input);
         passwordChanged(input);
+    }
+
+    if (succesNewAccount === true){
+        return (
+            <Navigate to = '/login'>
+
+            </Navigate>
+        )
     }
 
     return(

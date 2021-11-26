@@ -11,3 +11,7 @@
 #lable{
     text-align: left;
 }
+
+.hidden_register{
+    display: none;
+}

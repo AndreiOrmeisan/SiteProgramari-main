@@ -1,8 +1,8 @@
 import React , {useState} from 'react';
 import { checkAccount } from '../../../utils/requests';
-import { Navigate,Link} from "react-router-dom";
+import { Navigate} from "react-router-dom";
 
-const Main = ({setLoggedIn, setRegister}) => {
+const Main = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [succesLogin, setSuccesLogin] = useState('false');
@@ -16,7 +16,6 @@ const Main = ({setLoggedIn, setRegister}) => {
 
             if (response.data.successful){
                 localStorage.setItem('token', response.data.token)
-                setLoggedIn(true);
                 setSuccesLogin(true);
             }
             else if (response.data.userDoesntExist){
@@ -32,24 +31,9 @@ const Main = ({setLoggedIn, setRegister}) => {
         }
     }
 
-    function register(){
-        setRegister(true);
-    }
-
     if (succesLogin === true){
-        document.getElementById('btnLogin').innerHTML = 'Log out';
         return (
-            <Navigate to = '/'>
-
-            </Navigate>
-        )
-    }
-
-    if (document.getElementById('btnLogin').innerHTML == 'Log out'){
-        return (
-            <Navigate to = '/logout'>
-
-            </Navigate>
+           <Navigate to = '/'/>
         )
     }
 
@@ -69,11 +53,6 @@ const Main = ({setLoggedIn, setRegister}) => {
                 </div>
                 <div>
                     <button className='btnLogin' onClick = {logIn}>Log in</button>
-                </div>
-                <div>
-                    <Link to = '/inregistrare'>
-                        <button className = 'register' onClick = {register}>Register now</button>
-                    </Link> 
                 </div>   
             </div>         
         </div>

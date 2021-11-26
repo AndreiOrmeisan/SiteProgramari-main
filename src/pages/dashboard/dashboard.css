@@ -1,0 +1,37 @@
+.card{
+    justify-content: center;
+    display: inline-block;
+}
+
+.card_body{
+    font-family: sans-serif;
+    margin: 2rem;
+    overflow: hidden;
+    box-shadow: 0 2px 20px gray;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 200ms eas;
+    width: 1000px;
+    height: 350px;
+}
+
+.card_img{
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.card_title{
+    padding: 1rem;
+}
+
+.card_description{
+    padding: 1ream;
+}
+
+.card :hover{
+    transform: scale(1.02);
+}

@@ -103,3 +103,7 @@
 .register:hover{
     box-shadow: 1.5px 1.5px 1.5px 1.5px grey;
 }
+
+.hiddenLogin{
+    display: none;
+}
